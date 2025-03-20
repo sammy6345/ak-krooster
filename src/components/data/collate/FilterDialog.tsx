@@ -12,6 +12,7 @@ import {
   useTheme,
 } from "@mui/material";
 import Class from "../input/Select/Class";
+import Branch from "../input/Select/Branch"
 import OwnedFilter from "./filter/OwnedFilter";
 import ServerFilter from "./filter/ServerFilter";
 import { Close, FilterAltOutlined } from "@mui/icons-material";
@@ -105,6 +106,9 @@ const FilterDialog = memo((props: Props) => {
             </Select>
             <Select title="Module" nobg>
               <ServerFilter value={[...filter.MODULECN]} onChange={(value) => toggleFilter("MODULECN", value)} />
+            </Select>
+            <Select title="Branch" nobg sx={{ gridColumn: "1 / -1" }}>
+              <Branch value={[...filter.BRANCH]} onChange={(value) => toggleFilter("BRANCH", value)} />
             </Select>
           </Box>
           <Button onClick={clearFilters}>Clear Filter</Button>
