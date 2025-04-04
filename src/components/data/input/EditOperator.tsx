@@ -46,6 +46,11 @@ import usePresets from "util/hooks/usePresets";
 import Chip from "components/base/Chip";
 import applyPresetToOperator from "util/fns/planner/applyPresetToOperator";
 
+import { Star } from "@mui/icons-material"
+import { rarityColors } from "styles/rarityColors";
+import { Divider } from "@mui/material"
+import getBranch from "util/fns/getbranch";
+
 interface Props {
   op?: Operator;
   onChange: (op: Operator, callback?: () => void) => void;
@@ -183,6 +188,23 @@ const EditOperator = React.memo((props: Props) => {
           </IconButton>
         </Box>
       </DialogTitle>
+      <Box component="div"
+          sx={{ display: "flex",
+            marginTop: "-1.5em"
+          }}
+        >
+          <Box sx={{ color: rarityColors[opData.rarity], pl: "2em" 
+          }}
+          > 
+            {Array.apply(null, { length: op.rarity }).map(() => <Star fontSize="extrasmall"  />  )}
+          </Box>
+          <Divider orientation="vertical" flexItem sx={{margin: "0 0.5em", borderRightWidth: 3 }} />
+          <Image src={`/img/classes/class_${opData.class.toLowerCase()}.png`} width={24} height={24} alt={opData.class} />
+          <Typography variant="h3" alignContent={"center"} >{opData.class}</Typography>
+          <Divider orientation="vertical" flexItem sx={{margin: "0 0.5em", borderRightWidth: 3 }} />
+          <Image src={getBranch(opData)} width={24} height={24} alt={opData.branch}/>
+          <Typography variant="h3" alignContent={"center"} >{opData.branch}</Typography>
+        </Box>
       <DialogContent
         sx={{
           display: "grid",

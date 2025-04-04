@@ -86,6 +86,10 @@ const FilterDialog = memo((props: Props) => {
             <Select title="Class" nobg sx={{ gridColumn: "1 / -1" }}>
               <Class value={[...filter.CLASS]} onChange={(value) => toggleFilter("CLASS", value)} />
             </Select>
+            <Select title="Branch" nobg sx={{ gridColumn: "1 / -1" }}>
+              {} // For each branch, create a box, with left column holding class symbol, and right column with subclass icons. Extra filter might be needed.
+              <Class value={[...filter.CLASS]} onChange={(value) => toggleFilter("CLASS", value)} />
+            </Select>
             <Select title="Rarity" nobg sx={{ gridColumn: "span 2" }}>
               <Rarity
                 value={[...filter.RARITY]}
